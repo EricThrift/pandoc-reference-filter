@@ -330,25 +330,15 @@ class ReferenceManager(object):
         level, attr, text = value
         label, classes, kvs = attr
 
-        if 'unnumbered' in classes:
-            pretext = ''
-        else:
-            ref = self.references[label]
-            pretext = '{}: '.format(ref['id'])
-
-        # EDT - disable pretext for now
-        # pretext = [pf.Str(pretext)]
-        pretext = ''
-
         if format in ('html', 'html5', 'markdown'):
-            return pf.Header(level, attr, pretext + text)
+            return pf.Header(level, attr, text)
 
         elif format == 'latex':
             # have to do this to get rid of hyperref
             return pf.Header(level, attr, text)
 
         else:
-            return pf.Header(level, attr, pretext + text)
+            return pf.Header(level, attr, text)
 
     def math_replacement(self, key, value, format, metadata):
         """Create our own links to equations instead of relying on
