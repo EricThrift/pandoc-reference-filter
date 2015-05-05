@@ -417,7 +417,7 @@ class ReferenceManager(object):
             return pf.RawInline('latex', link)
 
         else:
-            link_text = '{}{}{}'.format(prefix, text, suffix)
+            link_text = u'{}{}{}'.format(prefix, text, suffix)
             link = pf.Link([pf.Str(link_text)], ('#' + label, ''))
             return link
 
