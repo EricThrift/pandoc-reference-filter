@@ -336,7 +336,9 @@ class ReferenceManager(object):
             ref = self.references[label]
             pretext = '{}: '.format(ref['id'])
 
-        pretext = [pf.Str(pretext)]
+        # EDT - disable pretext for now
+        # pretext = [pf.Str(pretext)]
+        pretext = ''
 
         if format in ('html', 'html5', 'markdown'):
             return pf.Header(level, attr, pretext + text)
